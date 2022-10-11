@@ -1,0 +1,8 @@
+#!/bin/sh
+
+[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
+[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
+[ -d "$GEM_HOME/bin" ] && PATH="$GEM_HOME/bin:$PATH"
+[ -d "$CARGO_HOME/bin" ] && PATH="$CARGO_HOME/bin:$PATH"
+[ -d "$XDG_DATA_HOME/npm/bin" ] && PATH="$XDG_DATA_HOME/npm/bin:$PATH"
+[ -d "$GOPATH/bin" ] && PATH="$HOME/go/bin:$PATH"

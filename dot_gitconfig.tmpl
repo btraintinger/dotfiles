@@ -1,0 +1,24 @@
+[user]
+	name = {{ .username }}
+	email = {{ .email }}
+	{{- if .use_bitwarden_secrets }}
+	signingkey = {{ (bitwardenFields "item" "gpg-public-key").signing_key.value }}
+	{{- end }}
+
+[url "https://github.com/"]
+	insteadOf = gh:
+
+[url "https://gist.github.com/"]
+	insteadOf = gist:
+
+[url "https://gitlab.com/"]
+	insteadOf = gl:
+
+[url "https://bitbucket.org/"]
+	insteadOf = bb:
+
+[credential "https://github.com"]
+	helper = !gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper = !gh auth git-credential

@@ -1,0 +1,7 @@
+#!/bin/sh
+. ~/.config/shell/envrc
+
+{{- if .use_bitwarden_secrets }}
+echo "{{ (bitwardenFields "item" "gpg-public-key").gpg_identity.value }}:6:" | gpg --import-ownertrust
+echo "{{ (bitwarden "item" "gpg-private-key").notes }}" | gpg --import-options restore --import
+{{- end }}

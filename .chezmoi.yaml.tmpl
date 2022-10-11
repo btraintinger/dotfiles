@@ -1,0 +1,26 @@
+{{- $username := "" -}}
+{{- if hasKey . "username" -}}
+{{-   $username = .username -}}
+{{- else -}}
+{{-   $username = promptString "username" -}}
+{{- end -}}
+
+{{- $email := "" -}}
+{{- if hasKey . "email" -}}
+{{-   $email = .email -}}
+{{- else -}}
+{{-   $email = promptString "email" -}}
+{{- end -}}
+
+{{- $use_bitwarden_secrets := promptBool "use_bitwarden_secrets" -}}
+
+data:
+  username : {{ $username | quote }}
+  email: {{ $email | quote }}
+  use_bitwarden_secrets: {{ $use_bitwarden_secrets }}
+
+encryption: gpg
+format: yaml
+sourceDir: ~/repos/dotfiles
+verbose: true
+mode: file

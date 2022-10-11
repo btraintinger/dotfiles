@@ -1,0 +1,6 @@
+README.md
+.gitignore
+
+{{- if not .use_bitwarden_secrets }}
+.ssh
+{{- end }}

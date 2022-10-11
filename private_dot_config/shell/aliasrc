@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# shortcuts
+alias e="$EDITOR"
+alias pg="$PAGER"
+alias g="git"
+alias mk="make"
+alias q="exit"
+alias clr="clear"
+alias mkd="mkdir"
+
+# quick relative path changing
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# better command config
+alias ls="ls -ph --group-directories-first --color=auto"
+alias l="ls"
+alias la="ls -la"
+alias mkdir="mkdir -pv"
+
+# colorful grep
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
+
+# confirm before overwriting something
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -I"
+
+# be verbose
+alias mkdir="mkdir -v"
+alias ln="ln -v"
+alias chmod="chmod -v"
+alias chown="chown -v"
+alias chgrp="chgrp -v"
+
+# copy paste
+alias y="xclip -selection clipboard -in"
+alias p="xclip -selection clipboard -out"
+
+# nvim alias if nvim is available
+[ -x "$(command -v nvim)" ] && alias vi="nvim" vim="nvim"

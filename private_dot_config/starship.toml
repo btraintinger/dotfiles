@@ -1,0 +1,4 @@
+command_timeout	= 1000
+
+[container]
+disabled = true

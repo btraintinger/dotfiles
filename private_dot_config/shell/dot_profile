@@ -1,0 +1,4 @@
+if ! [ -n "$($SHELL -c "echo $ZSH_VERSION")" ]; then
+    . ~/.config/shell/envrc
+    . ~/.config/shell/pathrc
+fi

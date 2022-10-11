@@ -1,0 +1,8 @@
+#!/bin/sh
+
+. ~/.config/shell/aliasrc
+
+{{ if eq .chezmoi.os "linux" -}}
+init_nvm=/usr/share/nvm/init-nvm.sh
+[ -e "$init_nvm" ] && . "$init_nvm"
+{{ end -}}

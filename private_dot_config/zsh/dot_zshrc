@@ -1,0 +1,44 @@
+# if not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# history settings
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
+setopt SHARE_HISTORY
+
+setopt AUTO_CD
+
+# directory hashes
+hash -d dl="$HOME"/Downloads
+hash -d dc="$HOME"/Documents
+hash -d dt="$HOME"/Desktop
+hash -d rp="$HOME"/repos
+hash -d vm="$HOME"/vm
+hash -d cf="$HOME"/.config
+
+# enable colors and change prompt:
+autoload -U colors && colors
+PROMPT="%F{green}%n@%m%f%F{white}:%f%F{cyan}%~%f%F{white}$ "
+
+. ~/.config/shell/shellrc
+
+# automatic completion
+autoload -U compinit && compinit -u -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*' # case insensitive
+zmodload zsh/complist
+compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
+_comp_options+=(globdots) # include hidden files
+# vi keys in completion menu
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'left' vi-backward-char
+bindkey -M menuselect 'down' vi-down-line-or-history
+bindkey -M menuselect 'up' vi-up-line-or-history
+bindkey -M menuselect 'right' vi-forward-char
+
+# source plugin config
+. $HOME/.config/zsh/plugins.zsh
